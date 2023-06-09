@@ -42,7 +42,7 @@ function generateSymbols() {
        let symbolstring = "";
        //look through 0-100
        for (i = 0; i < 100; i++) {
-              //check for an interval of 9 
+              //check for an interval of 9 if i is divisible by 9 print the symbol string
               if (i % 9 === 0) {
                      // tell symbolstring to be equal to symbolstring(itself a number)and concatenate with currentsymbol a string
                      symbolstring = symbolstring += currentsymbol;
@@ -50,6 +50,7 @@ function generateSymbols() {
                      
               }
               else
+              //if i isn't divisible by 9 scramble the index
               {
                      currentsymbol = symbols[Math.floor(Math.random() * symbols.length)];
               }
