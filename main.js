@@ -4,13 +4,13 @@ const pages = {
        2: "pick a number between 1 and 99",
        3: "add both digits together to get a new number",
        4: "subtract your new number from the original number",
-       5: "generateSymbols()", //random symbols
-       6: "this dummy"
+       5: "", //random symbols
+       6: ""
 
 
 };
-var currentpage = 0;
-let symbols = ["@","&","A","%","$","B","C","D", "("];
+var currentpage = 1;
+let symbols = ["@", "&", "A", "%", "$", "B", "C", "D", "("];
 let currentsymbol = "";
 //currentsymbol
 function next_slide() {
@@ -33,24 +33,33 @@ function render() {
        if (currentpage === 5) {
               generateSymbols();
        }
-       if (currentpage === 6) {
-              generateSymbols();
-       }
+
 }
 function generateSymbols() {
        //set chosen symbol from the array randomly
        currentsymbol = symbols[Math.floor(Math.random() * symbols.length)];
        // little function to randomly choose from the symbols that doesn't want to work
-       let symbolstring;
-       for ( symbolstring = 0; symbolstring < 10; symbolstring++) {
-
-              symbolstring += currentsymbol;
-       }
-       pages[5] = symbolstring;
-       pages[6] = "It's " + currentsymbol + " dummy";
+       let symbolstring = "";
        //look through 0-100
-       //concatenate a string or create elements to pin back to the DOM
+       for (i = 0; i < 100; i++) {
+              //check for an interval of 9 
+              if (i % 9 === 0) {
+                     // tell symbolstring to be equal to symbolstring(itself a number)and concatenate with currentsymbol a string
+                     symbolstring = symbolstring += currentsymbol;
+                     //replace all blank spaces with symbols in array
+                     
+              }
+              else
+              {
+                     currentsymbol = symbols[Math.floor(Math.random() * symbols.length)];
+              }
+              // add a random symbol from the symbols array, set symbolstring = symbolstring + symbol[randomindex]
+       }
        //set pages[5] to string or a placeholder
-       //replace all blank spaces with symbols in array
+       pages[5] = symbolstring;
        //set pages[6] to 'whatever dummy' concatenation of chosen symbol and the string
+       pages[6] = "It's " + currentsymbol + " dummy";
+       //concatenate a string or create elements to pin back to the DOM
+
+
 }
