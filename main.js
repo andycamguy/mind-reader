@@ -1,14 +1,16 @@
 const pages = {
 
-       1: render(),
+       1: "I can read your mind",
        2: "pick a number between 1 and 99",
        3: "add both digits together to get a new number",
        4: "subtract your new number from the original number",
-       5: generateSymbols(),  //random symbols
-       6: generateSymbols()
+       5: "generateSymbols()", //random symbols
+       6: "this dummy"
+
 
 };
 var currentpage = 0;
+let symbols = ["@","&","A","%","$","B","C","D", "("];
 let currentsymbol = "";
 //currentsymbol
 function next_slide() {
@@ -31,17 +33,21 @@ function render() {
        if (currentpage === 5) {
               generateSymbols();
        }
+       if (currentpage === 6) {
+              generateSymbols();
+       }
 }
 function generateSymbols() {
        //set chosen symbol from the array randomly
        currentsymbol = symbols[Math.floor(Math.random() * symbols.length)];
-       let symbolString = "";
-       for (let i = 0; i < 100; i++) {
+       // little function to randomly choose from the symbols that doesn't want to work
+       let symbolstring;
+       for ( symbolstring = 0; symbolstring < 10; symbolstring++) {
 
-              symbolString += currentsymbol;
+              symbolstring += currentsymbol;
        }
-
-       pages[6] = "It's " + currentsymbol + "dummy";
+       pages[5] = symbolstring;
+       pages[6] = "It's " + currentsymbol + " dummy";
        //look through 0-100
        //concatenate a string or create elements to pin back to the DOM
        //set pages[5] to string or a placeholder
